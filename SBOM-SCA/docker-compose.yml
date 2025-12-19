@@ -1,10 +1,10 @@
 services:
-  bomtori:
+  sbom-sca:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: bomtori
-    image: bomtori:latest
+    container_name: sbom-sca
+    image: sbom-sca:latest
     volumes:
       - ./output:/app/output
     networks:
