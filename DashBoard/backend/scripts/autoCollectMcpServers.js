@@ -171,10 +171,10 @@ function saveServerToDb(repo) {
 }
 
 // 메인 함수
-async function collectMcpServers() {
+async function collectMcpServers(maxResults = 30) {
   console.log('=== MCP 서버 자동 수집 시작 ===\n');
+  console.log(`수집 목표 개수: ${maxResults}개\n`);
   
-  const maxResults = 30;
   const collectedServers = [];
   const collectedUrls = new Set(); // 중복 체크용 URL Set
   
@@ -288,7 +288,22 @@ async function collectMcpServers() {
 
 // 스크립트 실행
 if (require.main === module) {
-  collectMcpServers()
+  // 커맨드라인 인자에서 개수 가져오기
+  let maxResults = 30; // 기본값
+  
+  if (process.argv.length > 2) {
+    const arg = parseInt(process.argv[2], 10);
+    if (!isNaN(arg) && arg > 0) {
+      maxResults = arg;
+    } else {
+      console.error('오류: 유효한 숫자를 입력해주세요.');
+      console.log('사용법: node autoCollectMcpServers.js [개수]');
+      console.log('예시: node autoCollectMcpServers.js 50');
+      process.exit(1);
+    }
+  }
+  
+  collectMcpServers(maxResults)
     .then(() => {
       console.log('\n자동 수집 완료!');
       process.exit(0);
