@@ -1,0 +1,834 @@
+/* CSS 변수 정의 - DLP와 동일 */
+:root {
+  --surface: #ffffff;
+  --surface-soft: #fcfdff;
+  --border: #e2e4f0;
+  --divider: #eceff7;
+  --text: #1f2233;
+  --muted: #6f7690;
+  --accent-soft: rgba(0, 49, 83, 0.14);
+}
+
+.request-board-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #f5f6fb;
+}
+
+.request-board-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f5f5f5;
+  height: 100%;
+}
+
+.request-board {
+  padding: 24px;
+  background: #f5f6fb;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+.board-header {
+  margin-bottom: 24px;
+}
+
+.board-header h1 {
+  margin: 0 0 28px 0;
+  color: #1a1a1a;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.request-board-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 0;
+}
+
+.request-board-tab {
+  padding: 8px 16px 6px 16px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #666;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.2s;
+  font-weight: normal;
+}
+
+.request-board-tab:hover {
+  background: transparent;
+  color: #003153;
+  border-bottom: 2px solid rgba(0, 49, 83, 0.5);
+}
+
+.request-board-tab.active {
+  background: transparent;
+  color: #003153;
+  border-bottom: 2px solid #003153;
+  font-weight: 650;
+}
+
+.requests-table-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  flex: 1;
+  min-height: 0;
+  max-height: calc(100vh - 300px);
+  margin-bottom: 16px;
+}
+
+.requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background: #ffffff;
+}
+
+.requests-table thead {
+  background: #fcfdff;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.requests-table th {
+  padding: 12px 24px;
+  border-right: 1.5px solid rgba(224, 224, 224, 0.3);
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  border-bottom: 2px solid #e0e0e0;
+  white-space: nowrap;
+  background: #fcfdff;
+}
+
+.requests-table th:last-child {
+  border-right: none;
+}
+
+.requests-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding-right: 24px;
+}
+
+.requests-table th.sortable:hover {
+  background: rgba(0, 49, 83, 0.05);
+}
+
+.sort-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.5;
+}
+
+.sort-icon.active {
+  opacity: 1;
+}
+
+.requests-table td {
+  padding: 12px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  border-right: 1.5px solid rgba(240, 240, 240, 0.5);
+  color: #333;
+  background: #ffffff;
+}
+
+.requests-table td:last-child {
+  border-right: none;
+}
+
+.requests-table tbody tr {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.requests-table tbody tr:hover {
+  background: rgba(0, 49, 83, 0.08);
+  cursor: pointer;
+}
+
+.requests-table tbody tr.selected {
+  background: rgba(0, 49, 83, 0.1);
+}
+
+.employee-id {
+  font-size: 0.85rem;
+  color: #003153; /* 메인 브랜드 컬러 */
+}
+
+.request-title-cell {
+  color: #003153; /* 메인 브랜드 컬러 */
+  font-weight: 500;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.request-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.9rem;
+  color: #666; /* 진한 회색 텍스트 */
+}
+
+.request-card-body {
+  margin-bottom: 16px;
+}
+
+.request-description {
+  margin: 0 0 12px 0;
+  color: #666; /* 진한 회색 텍스트 */
+  line-height: 1.6;
+}
+
+.request-link,
+.review-info,
+.review-comment {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #666; /* 진한 회색 텍스트 */
+}
+
+.request-link a {
+  color: #003153; /* 메인 브랜드 컬러 */
+  text-decoration: underline;
+}
+
+.request-link a:hover {
+  color: #3E92A4; /* 서브 강조색 - hover 포인트 */
+}
+
+.review-date {
+  margin-left: 8px;
+  color: #003153; /* 메인 브랜드 컬러 */
+}
+
+.review-comment {
+  padding: 8px;
+  background: #f9f9f9; /* 연한 회색 배경 */
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+
+.btn-view-detail {
+  padding: 6px 12px;
+  background: #003153; /* 메인 브랜드 컬러 - 포인트 색상 */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.btn-view-detail:hover {
+  background: #002640;
+}
+
+.btn-refresh {
+  padding: 10px;
+  background: transparent !important;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  min-width: 40px;
+  height: 40px;
+  outline: none;
+  margin-right: 15px;
+  align-self: center;
+}
+
+.btn-refresh:hover:not(:disabled) {
+  background: transparent !important;
+  outline: none;
+}
+
+.btn-refresh:active:not(:disabled) {
+  background: transparent !important;
+  outline: none;
+}
+
+.btn-refresh svg {
+  width: 20px;
+  height: 20px;
+}
+
+.refresh-icon.rotating {
+  animation: rotate 0.6s ease-in-out;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.btn-refresh:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+/* Register Board 상세보기 Run Analysis 버튼 스타일 - DLP 상세보기 버튼과 동일 */
+.request-detail-drawer__panel .btn-refresh {
+  padding: 6px 12px !important;
+  background: #003153 !important;
+  background-color: #003153 !important;
+  background-image: none !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  transition: background 0.2s !important;
+  display: block !important;
+  width: 100%;
+  min-height: auto;
+  line-height: 1.2;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  margin-right: 0 !important;
+}
+
+.request-detail-drawer__panel .btn-refresh:hover:not(:disabled) {
+  background: #002640 !important;
+  background-color: #002640 !important;
+  background-image: none !important;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Register Board 상세보기 Drawer 스타일 - DLP와 동일 */
+.request-detail-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.request-detail-drawer.is-open {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.request-detail-drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 22, 48, 0.45);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.request-detail-drawer.is-open .request-detail-drawer__backdrop {
+  opacity: 1;
+}
+
+.request-detail-drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(840px, 94vw);
+  height: 100%;
+  background: var(--surface);
+  box-shadow: -24px 0 48px rgba(20, 24, 50, 0.18);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  border-left: 1px solid var(--border);
+  overflow-x: visible;
+  min-width: 0;
+  z-index: 2001;
+}
+
+.request-detail-drawer.is-open .request-detail-drawer__panel {
+  transform: translateX(0);
+}
+
+.request-detail-drawer__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 28px 16px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.request-detail-drawer__header > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.request-detail-drawer__eyebrow {
+  all: unset;
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-family: inherit;
+}
+
+.request-detail-drawer__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: none;
+  line-height: 1.3;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.request-detail-drawer__close {
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.request-detail-drawer__close:hover {
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+.request-detail-drawer__close:focus-visible {
+  outline: 2px solid rgba(0, 49, 83, 0.35);
+  outline-offset: 2px;
+}
+
+.request-detail-drawer__content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: visible;
+  padding: 32px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+
+.request-detail-drawer__section {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+  overflow: visible;
+}
+
+.request-detail-drawer__section + .request-detail-drawer__section {
+  border-top: 1px solid rgba(31, 34, 51, 0.08);
+  padding-top: 24px;
+  margin-top: 8px;
+}
+
+.request-detail-drawer__section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+}
+
+.request-detail-drawer__info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px 36px;
+  margin-bottom: 24px;
+  min-width: 0;
+  overflow: visible;
+}
+
+.request-detail-drawer__info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: visible;
+  min-width: 0;
+}
+
+.request-detail-drawer__info-label {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.request-detail-drawer__info-value {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+.request-detail-drawer__code-box {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 12px;
+  overflow-x: auto;
+}
+
+.request-detail-drawer__code-box pre {
+  margin: 0;
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.request-detail-drawer__code-box code {
+  font-family: inherit;
+}
+
+/* Tool 스캔 결과 모달 (기존 모달 스타일 유지) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #f5f5f5;
+  border-radius: 12px;
+  width: min(1200px, 95vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f9f9f9;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #003153;
+  font-size: 1.5rem;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.detail-section {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0; /* 연한 회색 구분선 */
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.detail-section h3 {
+  margin: 0 0 16px 0;
+  color: #003153; /* 메인 브랜드 컬러 */
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.detail-item {
+  margin-bottom: 12px;
+  color: #666; /* 진한 회색 텍스트 */
+}
+
+.detail-item strong {
+  color: #003153; /* 메인 브랜드 컬러 */
+  margin-right: 8px;
+}
+
+.detail-text {
+  margin: 8px 0 0 0;
+  padding: 8px;
+  background: #f9f9f9; /* 연한 회색 배경 */
+  border-radius: 4px;
+  line-height: 1.6;
+}
+
+.detail-item a {
+  color: #003153; /* 메인 브랜드 컬러 */
+  text-decoration: underline;
+}
+
+.detail-item a:hover {
+  color: #3E92A4; /* 서브 강조색 - hover 포인트 */
+}
+
+.code-box {
+  margin-top: 8px;
+  padding: 12px;
+  background: #191E1C; /* 최하단 배경 - 코드 박스는 다크 유지 */
+  border: 1px solid #e0e0e0; /* 연한 회색 구분선 */
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.code-box pre {
+  margin: 0;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #ffffff;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.code-box code {
+  font-family: inherit;
+  color: #ffffff;
+}
+
+.review-form {
+  margin-top: 16px;
+}
+
+.review-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.btn-review {
+  padding: 10px 20px;
+  border: 1.5px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-approve {
+  background: #f5f5f5;
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-approve:hover,
+.btn-approve.active {
+  background: #28a745;
+  color: #fff;
+}
+
+.btn-reject {
+  background: #f5f5f5;
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-reject:hover,
+.btn-reject.active {
+  background: #dc3545;
+  color: #fff;
+}
+
+.review-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.review-form label strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #003153; /* 메인 브랜드 컬러 */
+}
+
+.review-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0; /* 연한 회색 구분선 */
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #333; /* 진한 회색 텍스트 */
+  font-family: inherit;
+  resize: vertical;
+}
+
+.review-form textarea:focus {
+  outline: 2px solid #003153; /* 메인 브랜드 컬러 - 포인트 색상 */
+  border-color: #003153; /* 메인 브랜드 컬러 */
+}
+
+.review-form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.btn-submit-review {
+  padding: 10px 20px;
+  background: #003153; /* Prussian Blue 배경 */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-submit-review:hover {
+  background: #002640; /* 더 진한 Prussian Blue */
+}
+
+.btn-cancel-review {
+  padding: 10px 20px;
+  background: #f5f5f5;
+  color: #003153;
+  border: 1.5px solid #003153;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel-review:hover {
+  background: rgba(0, 49, 83, 0.05);
+}
+
+.list-page__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.search-container {
+  flex: 1;
+  max-width: 800px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  color: #8b8b8b;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px 12px 40px;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  color: #1a1a1a;
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #003153;
+  box-shadow: 0 0 0 3px rgba(0, 49, 83, 0.1);
+  background: #ffffff;
+}
+
+.search-input::placeholder {
+  color: #8b8b8b;
+  font-weight: 400;
+}
+

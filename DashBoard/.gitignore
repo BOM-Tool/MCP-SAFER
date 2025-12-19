@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Database
+backend/db/*.db
+backend/db/*.db-shm
+backend/db/*.db-wal
+backend/db/*.db-journal
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+logs/
+
+# Build outputs
+frontend/dist/
+frontend/build/
+frontend/dist-ssr/
+*.local
+
+# Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# PEM Keys (보안상 중요!)
+!pem/*.pem
+!pem/*.key
+!pem/README.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary files
+*.tmp
+*.temp

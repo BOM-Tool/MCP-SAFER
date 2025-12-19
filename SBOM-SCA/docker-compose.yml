@@ -1,0 +1,21 @@
+services:
+  bomtori:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bomtori
+    image: bomtori:latest
+    volumes:
+      - ./output:/app/output
+    networks:
+      - mcp-network
+    entrypoint: ["tail", "-f", "/dev/null"]  # ENTRYPOINT 오버라이드하여 컨테이너가 계속 실행되도록 함
+    working_dir: /app
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+networks:
+  mcp-network:
+    external: true
+

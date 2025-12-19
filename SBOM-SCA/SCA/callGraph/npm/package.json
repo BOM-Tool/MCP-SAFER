@@ -1,0 +1,22 @@
+{
+  "name": "analyzer",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^24.9.1",
+    "builtin-modules": "^5.0.0",
+    "glob": "^11.0.3",
+    "globals": "^16.4.0",
+    "ts-morph": "^27.0.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.9.3"
+  }
+}

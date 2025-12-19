@@ -1,0 +1,244 @@
+body, html, #root {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* 전체 스크롤 방지 */
+  background: #fff; /* 흰색 배경 */
+  font-family: 'Pretendard', 'Noto Sans KR', Arial, sans-serif;
+}
+/* #root { ... } ==> 사용자 max-width/margin 제거 */
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.header {
+  width: 100%;
+  min-width: 0;
+  height: 44px; /* 높이 줄임 */
+  flex-shrink: 0; /* 헤더 크기 고정 */
+  background: #fff; /* 흰색 배경 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-bottom: 1px solid #e0e0e0; /* 연한 회색 구분선 */
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666; /* 진한 회색 텍스트 */
+}
+.logout-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0;
+  transition: all 0.2s ease;
+  border: 1.5px solid #e2e8f0;
+  background: #fff;
+  color: #2d3748;
+  min-width: 70px;
+  height: 32px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logout-button:hover {
+  border-color: #cbd5e0;
+  background: #f7fafc;
+  color: #1a202c;
+}
+.logout-button:active {
+  background: #edf2f7;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.workspace {
+  font-size: 1.05em; /* 높이 줄임에 맞게 */
+  font-weight: 800;
+  color: #003153; /* Prussian Blue */
+  letter-spacing: -1px;
+}
+.content-row {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+  overflow: hidden; /* 스크롤 방지 */
+  gap: 0; /* 공백 제거 */
+  box-sizing: border-box;
+  position: relative; /* 상대 위치 컨테이너 */
+}
+.sidebar {
+  background: #003153; /* Prussian Blue 배경 */
+  color: #fff; /* 흰색 텍스트 */
+  width: 65px;
+  height: 100%;
+  position: absolute; /* absolute로 overlay */
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 8px 0 8px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  overflow-y: auto; /* 사이드바만 스크롤 가능 */
+  overflow-x: hidden;
+  z-index: 10; /* 높은 z-index로 overlay */
+  border-right: 1px solid #002640; /* 더 진한 Prussian Blue 구분선 */
+  box-sizing: border-box;
+  transition: width 0.3s ease, padding 0.3s ease, align-items 0.3s ease;
+}
+.sidebar:hover {
+  width: 190px;
+  padding: 18px 12px 0 12px;
+  align-items: stretch;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.2); /* 더 강한 그림자로 overlay 효과 */
+}
+.sidebar-title {
+  font-size: 1em; /* 줄임 */
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  color: #333; /* 진한 회색 텍스트 */
+}
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar-menu-top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar-menu-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+  padding-bottom: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sidebar-menu a {
+  color: #fff; /* 흰색 텍스트 */
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 닫혀있을 때 아이콘 중앙 정렬 */
+  position: relative;
+  white-space: nowrap;
+  background: transparent; /* 기본 배경 없음 */
+}
+.sidebar:hover .sidebar-menu a {
+  justify-content: flex-start; /* 열렸을 때 왼쪽 정렬 */
+}
+
+.menu-item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 닫혀있을 때 중앙 정렬 */
+  position: relative;
+  width: 100%;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.sidebar:hover .menu-item-wrapper {
+  justify-content: flex-start; /* 열렸을 때 왼쪽 정렬 */
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+  margin-right: 10px; /* 아이콘 오른쪽에만 간격 */
+}
+.menu-label {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+.sidebar:hover .menu-label {
+  opacity: 1;
+  width: auto;
+}
+
+.sidebar:not(:hover) .menu-icon {
+  margin-right: 0; /* 사이드바가 닫혀있을 때는 간격 없음 */
+}
+.sidebar-menu a.active,
+.sidebar-menu a:hover {
+  background: rgba(255, 255, 255, 0.15); /* 연한 흰색 배경 */
+  color: #fff;
+  font-weight: normal;
+}
+.sidebar-menu a.active {
+  background: rgba(255, 255, 255, 0.2); /* 활성 탭 더 진한 연한 흰색 */
+  color: #fff;
+}
+.sidebar-menu a.active .menu-icon {
+  filter: brightness(0) invert(1); /* 아이콘을 흰색으로 */
+}
+.sidebar-menu a .menu-icon {
+  filter: brightness(0) invert(1); /* 모든 아이콘을 흰색으로 */
+}
+.main-content {
+  flex: 1;
+  min-width: 0; /* flex 아이템 오버플로우 방지 */
+  background: #f5f6fb;
+  color: #333; /* 진한 회색 텍스트 */
+  padding: 20px 20px; /* 상단 여백 축소 */
+  margin-left: 70px; /* 사이드바 너비만큼 왼쪽 마진 */
+  overflow-y: auto; /* 메인 콘텐츠만 스크롤 가능 */
+  overflow-x: hidden; /* 가로 스크롤 방지 */
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease; /* 사이드바 확장 시 마진 유지 */
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3 {
+  color: #003153; /* Prussian Blue - 포인트 색상 */
+  font-weight: 800;
+}
+
+.main-content p {
+  color: #666; /* 진한 회색 텍스트 */
+}
+
+.main-content h1:first-child,
+.main-content h2:first-child,
+.main-content h3:first-child {
+  margin-top: 0; /* 제목 기본 상단 마진 제거 */
+}

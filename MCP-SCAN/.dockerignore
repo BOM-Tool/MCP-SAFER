@@ -1,0 +1,41 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Virtual environments
+venv/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Script
+*.sh
+
+# Compiled binaries
+scanner/analyzers/rules/parsers/go_parser
+
+# Node modules
+node_modules/
+
+# Artifacts
+artifacts/
+
+# Temp
+temp/
+
+# Output
+output/
+
+# Test and backup files
+test/
+tests/
+*.backup.*

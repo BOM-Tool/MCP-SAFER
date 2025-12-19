@@ -1,0 +1,18 @@
+services:
+  bomtool-scanner:
+    build: .
+    image: bomtool-scanner:latest
+    container_name: bomtool-scanner
+    entrypoint: ["tail", "-f", "/dev/null"]
+    volumes:
+      - ./output:/app/output
+      - ./test:/app/test
+      - ./scanner/analyzers/common:/app/scanner/analyzers/common
+      - ./scanner/analyzers/language.py:/app/scanner/analyzers/language.py
+      - ./scanner/analyzers/rules/go:/app/scanner/analyzers/rules/go
+      - ./scanner/analyzers/rules/typescript:/app/scanner/analyzers/rules/typescript
+      - ./scanner/analyzers/rules/mcp:/app/scanner/analyzers/rules/mcp
+      - ./scanner/runner:/app/scanner/runner
+    working_dir: /app
+    environment:
+      - PYTHONUNBUFFERED=1

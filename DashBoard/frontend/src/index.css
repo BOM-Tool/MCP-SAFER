@@ -1,0 +1,63 @@
+/* 전역 버튼 스타일 */
+.btn-primary,
+button[type="submit"].btn-primary,
+.login-button,
+.export-button,
+.fix-button,
+.btn-submit-review,
+.btn-save,
+.btn-edit {
+  background: #003153; /* Prussian Blue 배경 */
+  color: #fff; /* 흰색 텍스트 */
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover,
+button[type="submit"].btn-primary:hover,
+.login-button:hover,
+.export-button:hover,
+.fix-button:hover,
+.btn-submit-review:hover,
+.btn-save:hover,
+.btn-edit:hover {
+  background: #002640; /* 더 진한 Prussian Blue */
+  color: #fff;
+}
+
+.btn-secondary,
+.btn-cancel,
+.register-link-button {
+  background: #f5f5f5; /* 흰색 배경 */
+  color: #003153; /* Prussian Blue 텍스트 */
+  border: 1.5px solid #003153; /* Prussian Blue 테두리 */
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover,
+.btn-cancel:hover {
+  background: rgba(0, 49, 83, 0.05); /* 연한 파란색 배경 */
+  color: #003153;
+}
+
+.register-link-button {
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.register-link-button:hover {
+  background: transparent;
+  color: #002640;
+}

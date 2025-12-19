@@ -1,0 +1,17 @@
+services:
+  mcp-vetting:
+    build: .
+    image: mcp-vetting:latest
+    container_name: mcp-vetting
+    entrypoint: ["tail", "-f", "/dev/null"]  # ENTRYPOINT 오버라이드하여 컨테이너가 계속 실행되도록 함
+    volumes:
+      - ./output:/app/output
+      - ./temp_env:/app/temp_env
+    working_dir: /app
+    environment:
+      - PYTHONUNBUFFERED=1
+    # 필요시 환경 변수 추가 (예: NOTION_TOKEN, GITHUB_TOKEN 등)
+    # environment:
+    #   - NOTION_TOKEN=${NOTION_TOKEN}
+    #   - GITHUB_TOKEN=${GITHUB_TOKEN}
+

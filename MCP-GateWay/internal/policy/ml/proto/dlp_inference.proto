@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package dlp_inference;
+
+option go_package = "mcp-gateway/internal/policy/ml/proto";
+
+service DLPInference {
+    rpc DetectSensitiveInfo(SensitiveInfoRequest) returns (SensitiveInfoResponse);
+    rpc BatchDetectSensitiveInfo(BatchSensitiveInfoRequest) returns (BatchSensitiveInfoResponse);
+    rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse);
+}
+
+message SensitiveInfoRequest {
+    string text = 1;
+    string user_id = 2;
+    string session_id = 3;
+    repeated string categories = 4; // 탐지할 카테고리 필터
+    bool include_reasoning = 5;     // AI 추론 과정 포함 여부
+    float confidence_threshold = 6; // 신뢰도 임계값
+}
+
+message SensitiveInfoResponse {
+    repeated SensitiveDetection detections = 1;
+    float confidence_score = 2;
+    int64 processing_time_ms = 3;
+    string model_version = 4;
+    string request_id = 5;
+    bool from_cache = 6;
+}
+
+message SensitiveDetection {
+    string category = 1;
+    string type = 2;
+    string value = 3;
+    int32 start_position = 4;
+    int32 end_position = 5;
+    float confidence = 6;
+    string reasoning = 7; // AI가 왜 이렇게 판단했는지 설명
+    string source = 8;    // 탐지 소스 (regex/ml/hybrid)
+}
+
+message BatchSensitiveInfoRequest {
+    repeated SensitiveInfoRequest requests = 1;
+    int32 batch_timeout_ms = 2;
+}
+
+message BatchSensitiveInfoResponse {
+    repeated SensitiveInfoResponse responses = 1;
+    int64 total_processing_time_ms = 2;
+    int32 successful_requests = 3;
+    int32 failed_requests = 4;
+}
+
+message HealthCheckRequest {
+    string service = 1;
+}
+
+message HealthCheckResponse {
+    enum ServingStatus {
+        UNKNOWN = 0;
+        SERVING = 1;
+        NOT_SERVING = 2;
+    }
+    ServingStatus status = 1;
+    string message = 2;
+    int64 timestamp = 3;
+}
+

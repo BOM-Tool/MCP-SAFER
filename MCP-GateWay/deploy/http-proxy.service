@@ -1,0 +1,23 @@
+[Unit]
+Description=HTTP Proxy Service (DLP/MITM)
+After=network.target
+
+[Service]
+Type=simple
+User=mcp
+WorkingDirectory=/opt/mcp-gateway
+ExecStart=/opt/mcp-gateway/http-proxy -config /opt/mcp-gateway/config-http-proxy.yaml
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# 환경 변수
+Environment="GO_ENV=production"
+
+# 리소스 제한
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+

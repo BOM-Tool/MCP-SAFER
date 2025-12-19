@@ -1,0 +1,24 @@
+{
+  "name": "bomtool-parsers",
+  "version": "1.0.0",
+  "description": "TypeScript and JavaScript parser for BOMTool mcp scanner",
+  "main": "ts_parser.js",
+  "private": true,
+  "scripts": {
+    "parse": "node ts_parser.js"
+  },
+  "keywords": [
+    "parser",
+    "typescript",
+    "javascript",
+    "mcp-scanner"
+  ],
+  "author": "BOMTool",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=14.17"
+  },
+  "dependencies": {
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,27 @@
+# HTTP Proxy 설정 (8082)
+# 사용법: ./bin/http-proxy -config config-http-proxy.yaml
+
+http_proxy:
+  enabled: true
+  port: ":8082"
+  log_dir: "./logs"
+  enable_mitm: true  # HTTPS 트래픽 복호화 활성화 (DLP 마스킹 기능 사용)
+  ca_cert_file: "./certs/ca-cert.pem"
+  ca_key_file: "./certs/ca-key.pem"
+  force_http_1_1: true  # HTTP/1.1 강제 (로그 분석 용이)
+  verbose_logging: true  # 헤더 포함 상세 로깅
+  ai_only: false  # 모든 트래픽 로깅 (cursor.sh 외 다른 도메인도)
+  decode_protobuf: true  # Protobuf에서 텍스트 추출
+  # 로컬 개발: localhost 사용
+  # EC2 배포: 백엔드 서버의 실제 IP 주소로 변경 필요
+  #backend_api_url: "http://localhost:3001"  # 로컬 개발용
+  backend_api_url: "http://15.165.223.28:3001"  # EC2 배포용 (백엔드 서버 IP로 변경)
+  dlp_api_key: "default-dlp-api-key-change-in-production"  # DLP API 키
+
+# AI 모델 설정
+ai_model:
+  enabled: true
+  model_path: "./models/DistilBERT_v1"  # AI 모델 경로
+  fallback_to_patterns: true  # AI 모델 실패시 패턴 매칭으로 폴백
+  confidence_threshold: 0.7  # 탐지 신뢰도 임계값
+

@@ -1,0 +1,24 @@
+[Unit]
+Description=MCP Proxy Service (8081)
+After=network.target
+
+[Service]
+Type=simple
+User=mcp
+WorkingDirectory=/opt/mcp-gateway
+ExecStart=/opt/mcp-gateway/mcp-gateway -config /opt/mcp-gateway/config-cursor-mitm.yaml
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# 환경 변수 (필요시 수정)
+Environment="ML_SERVER_ADDRESS=localhost:50051"
+Environment="GO_ENV=production"
+
+# 리소스 제한
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+

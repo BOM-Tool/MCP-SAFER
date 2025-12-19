@@ -1,0 +1,19 @@
+# MCP Gateway 설정
+gateway:
+  listen: ":8081"
+  log_dir: "./logs"
+
+mcp_proxy:
+  # IP 기반 인증 설정 (필수: DB 기반 서버 관리)
+  # 로컬 개발: localhost 사용
+  # EC2 배포: 웹서버의 실제 IP 주소로 변경 필요
+  #webserver_url: "http://localhost:3001"  # 로컬 개발용
+  webserver_url: "http://15.165.223.28:3001"  # EC2 배포용 (웹서버 IP로 변경)
+  ip_auth_enabled: true                    # IP 기반 인증 활성화
+  api_key: ""                              # 웹서버 API 키 (선택적)
+  bypass_proxy: true                       # HTTP Proxy 우회 (직접 연결)
+
+ssh:
+  key_path: "./pem/MCP-Server.pem"
+  user: "ubuntu"
+
